@@ -9,10 +9,33 @@
     </head>
 
     <body>
-        <?php include './assets/css/styles.php'; ?>
-        <?php include 'login.php'; ?>
-        <?php include 'logout.php'; ?>
-        <?php include 'add_person.php'; ?>
+    <div class="container" >
+        <div class="main-box">
+            <div class="box-left">
+                <h1>WELCOME</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam.Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <button class="button"><span>Read More </span></button>
+            </div>
+
+            <div class="box-right">
+                <h1>LOGIN</h1>
+                <form method="POST" action="loginfonctionalty.php">
+                    <div class="input-row">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" id="email">
+                        <label for="pass">Password</label>
+                        <input name="password" type="password">
+                    </div>
+                        <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+                        <button type="submit" class="button"><span>Login </span></button>
+                </form>
+            </div>
+        </div>
+</div>
+
+
+
+        <script src="./js/script.js"></script>
     </body>
 
 </html>
