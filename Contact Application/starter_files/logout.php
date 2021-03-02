@@ -6,16 +6,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/style.css">
+        
         <title>Contact Application</title>
     </head>
 
-    <body>   
+    <body>
    
         <section id="Contacts List" >
                 <div class="add">
                         <h1>Contacts List</h1>
                 </div>
                     <div>
+                    <form class="example">
+                        <input type="text" name="search" placeholder="Search..">
+                    </form>
+                        <a href="add_person.php" ><button class="button"><span>Add person </span></button></a>
                         <table id="contacts">
                             <tr>
                                 <th>ID</th>
@@ -130,8 +135,6 @@
                         </table>
                     </div>
                     <a href="index.php"><button class="button"><span>Logout </span></button></a>
-                    
-
 
 
 
