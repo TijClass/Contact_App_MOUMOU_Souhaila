@@ -1,4 +1,4 @@
-
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +15,8 @@
                 <div class="main-box">
                     <div class="box-left">
                         <h1>WELCOME</h1>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam.Lorem, ipsum dolor sit amet consectetur adipisicing Excepturi facere illum ullam exercitationem praesentium Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <button class="button"><span>Read More </span></button>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scel<span id="dots">...</span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+                        <button onclick="myFunction()" id="myBtn">Read More</button>
                     </div>
 
                     <div class="box-right">
@@ -37,4 +37,4 @@
         <script src="./js/script.js"></script>
     </body>
 
-</html>
+</html> -->
