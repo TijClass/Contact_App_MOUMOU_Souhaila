@@ -6,8 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/style.css">
-        
-        <title>Contact Application</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+                <title>Contact Application</title>
     </head>
 
     <body>
@@ -16,11 +19,67 @@
                 <div class="add">
                         <h1>Contacts List</h1>
                 </div>
-                    <div>
+                <div>
                     <form class="example">
                         <input type="text" name="search" placeholder="Search..">
                     </form>
-                        <a href="add_person.php" ><button class="button"><span>Add person </span></button></a>
+        <div class="container">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Person</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">ADD PERSON</h4>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                            <form method ="POST" action="add_person.php" >
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>First Name :</label>
+                                        <input type="text" name="Fname">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Last Name :</label>
+                                        <input type="text" name="Lname">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Email :</label>
+                                        <input type="mail" name="Mail" require>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Adress :</label>
+                                        <input type="text" name="Adress">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Phone :</label>
+                                        <input type="text" name="Phone" require>
+
+                                        <input type="checkbox" name="checkbox" id="F"> <label for="F">Friend</label>
+                                        <input type="checkbox" name="checkbox" id="Fam"> <label for="Fam">Family</label>
+                                        <input type="checkbox" name="checkbox" id="B"> <label for="B">Business</label>
+                                    </div>
+
+                                        <label>Notes :</label>
+                                        <textarea rows="10" name="Notes"></textarea>
+                                        <button type="submit" class="button"><span>SUBMIT</span></button>
+                            </form>
+                    </div>
+                </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                                </div>
+                                
+                                </div>
+                            </div>
                         <table id="contacts">
                             <tr>
                                 <th>ID</th>
@@ -133,14 +192,12 @@
                                 <th></th>
                             </tr>
                         </table>
+                        <a href="index.php"><button class="btn btn-info btn-lg" ><span>Logout </span></button></a>
+                        
                     </div>
-                    <a href="index.php"><button class="button"><span>Logout </span></button></a>
 
-
-
-            
-
-        <script src="./js/script.js"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
+
 
 </html>
