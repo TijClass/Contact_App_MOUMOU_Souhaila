@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -21,12 +21,21 @@
                 </div>
                 <div>
                     <form class="example">
-                        <input type="text" name="search" placeholder="Search..">
+                    <div class="input-group rounded">
+                    </div>
                     </form>
+        <div class="search">
+            <input type="search" id="mySearch" name="q"
+            placeholder="User IDs are 4–8 characters in length" required
+            size="30" minlength="4" maxlength="8">
+            <button class="btn btn-lg cherche" >Search for user</button>
+            <button type="button" class="btn btn-lg cherche" data-toggle="modal" data-target="#myModal">Add Person</button>
+            <a href="index.php"><button class="btn btn-lg cherche"><span>Logout </span></button></a>
+        </div>
+            
         <div class="container">
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Person</button>
-
+            
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
@@ -68,13 +77,15 @@
 
                                         <label>Notes :</label>
                                         <textarea rows="10" name="Notes"></textarea>
-                                        <button type="submit" class="button"><span>SUBMIT</span></button>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-default" data-dismiss="modal">SUBMIT</button>
+                                        </div>
                             </form>
                     </div>
                 </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">SUBMIT</button>
                             </div>
                                 </div>
                                 
@@ -192,7 +203,6 @@
                                 <th></th>
                             </tr>
                         </table>
-                        <a href="index.php"><button class="btn btn-info btn-lg" ><span>Logout </span></button></a>
                         
                     </div>
 
