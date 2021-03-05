@@ -21,12 +21,17 @@
                 <h1>LOGIN</h1>
                 <form method="POST" action="loginfonctionalty.php">
                     <div class="input-row">
+                    <?php if(isset($_GET['err'])){?>
+                        <div class="alert">
+                            <?php echo $_GET['err']; ?>
+                        </div>
+                        <?php }?>
                         <label for="email">Email</label>
                         <input name="email" type="email" id="email">
                         <label for="pass">Password</label>
                         <input name="password" type="password">
                     </div>
-                        <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+                        <input type="checkbox" value="lsRememberMe" id="rememberMe" name="remember"> <label for="rememberMe">Remember me</label>
                         <button type="submit" class="button"><span>Login </span></button>
                 </form>
             </div>

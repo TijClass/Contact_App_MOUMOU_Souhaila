@@ -5,64 +5,38 @@ require('./Connection.php');
 $email= $_POST["email"];
 $passwor = $_POST["password"];
 
-
 if($email == "" || $passwor == ""){
     header("location: index.php");
 }
 else{
-
-
-    $sql = "SELECT COUNT(ID) FROM Admin WHERE email = '". $email."' AND pwd = '". $passwr."'";
-    $stmt = $Pdo->prepare($sql);
-
-    $data =  $stmt->fetchAll();
-
-
-    var_dump($data);
-
-// //   header("location: logout.php");
-//   $_SESSION["Email"] = $email;
-//   $_SESSION["Password"] = $passwor;
-}
-
- ?>
-
-    <!-- /Session/Cookies to rremeber de login/ -->
-
-<?php
-require('./connection.php');
-if(isset($_POST)){
-    // get from data base
-    $sql = "SELECT * FROM users";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        $row = mysqli_fetch_assoc($result);
-          $logEmail = $row["email"];
-          $logPassword = $row["password"];
-      }else{
-          echo "error";
-      }
-      
-
-    //
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    if($email != "" && $password != "" ){
-        if ($email == $logEmail){
-                if ($password == $logPassword){
+    // $sql = ;    <!-- /Session/Cookies to rremeber de login/ -->
+    $sql = $conn->prepare("SELECT email,password FROM users WHERE email = :email");
+    $sql->bindParam(':email',$email,PDO::PARAM_STR);
+    if($sql->execute()){
+        $data =  $sql->fetch(PDO::FETCH_ASSOC);
+        if($data != false){
+            if(count($data) > 0){
+                if($data['password'] == $passwor){
                     session_start(); 
                     $_SESSION['login']=true;
                     if(isset($_POST['remember'])){
                         setcookie("login_email",$email, time() + (86400 * 30), "/");
-                        setcookie("login_password",$password, time() + (86400 * 30), "/");
-                    }
-                    header('Location: ./index.php');
+                        setcookie("login_password",$passwor, time() + (86400 * 30), "/");
+
+
+                    header('Location: ./logout.php');
+                }else{
+                    header("location: ./index.php?err=Wrong password!");
                 }
             }else{
-                echo "wrong email";
+                header("location: ./index.php?err=Email not found!");
             }
+        }else{
+            header("location: ./index.php?err=Email not found!");
+        }
     }
-}else{
-    header('location: ./login.php');
+
 }
+
+}
+?>

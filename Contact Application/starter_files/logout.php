@@ -26,7 +26,7 @@
                     </form>
         <div class="search">
             <input type="search" id="mySearch" name="q"
-            placeholder="User IDs are 4–8 characters in length" required
+            placeholder="write your text" required
             size="30" minlength="4" maxlength="8">
             <button class="btn btn-lg cherche" >Search for user</button>
             <button type="button" class="btn btn-lg cherche" data-toggle="modal" data-target="#myModal">Add Person</button>
@@ -83,10 +83,6 @@
                             </form>
                     </div>
                 </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">SUBMIT</button>
-                            </div>
                                 </div>
                                 
                                 </div>
