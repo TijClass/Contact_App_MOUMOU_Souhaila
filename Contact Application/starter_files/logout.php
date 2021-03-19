@@ -1,4 +1,33 @@
-   
+<?php
+include'connection.php';
+
+    if(isset($_POST['submit'])){
+        if(!empty($_POST['Fname']) && !empty($_POST['Lname']) && !empty($_POST['Adress']) && !empty($_POST['Phone']) && !empty($_POST['Mail']) && !empty($_POST['checkbox']) && !empty($_POST['Notes']) && !empty($_POST['Action'])) {
+                $first_name = $_POST['Fname'];
+                $last_name = $_POST['Lname'];
+                $address1 = $_POST['Adress'];
+                $phone = $_POST['Phone'];
+                $email = $_POST['Mail'];
+                $group = $_POST['checkbox'];
+                $notes = $_POST['Notes'];
+                $action = $_POST['Action'];
+                $sql = "INSERT INTO contacts (`first_name`,`last_name`,`address1`,`phone`, `email`,`group`,`notes`,`action`)
+                VALUES ('".$first_name."','". $last_name."','". $address1."','". $phone."','". $email."','". $group."','". $notes."','". $action."')";
+                if(mysqli_query($conn,$sql))
+                {
+                // echo "form is succesefully";
+                header("reflech:2,url=contact.php");
+              } 
+                else {
+                echo "form not submitted: ". mysqli_error($conn);;
+              }
+        }
+                else{
+                die('test');
+                }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,19 +48,19 @@
                 <div class="add">
                         <h1>Contacts List</h1>
                 </div>
-                <div>
+
                     <form class="example">
-                    <div class="input-group rounded">
-                    </div>
+                        <div class="input-group rounded"></div>
+                        <div class="search">
+                            <input type="text" name="search" class="form-control" placeholder="Search :" value="">
+                            <button class="btn btn-lg cherche">Search</button>
+
+                            <button type="button" class="btn btn-lg cherche" data-toggle="modal" data-target="#myModal">Add Person</button>
+                            
+                            <a href="index.php"><button class="btn btn-lg cherche"><span>Logout </span></button></a>
+                        </div>
                     </form>
-        <div class="search">
-            <input type="search" id="mySearch" name="q"
-            placeholder="write your text" required
-            size="30" minlength="4" maxlength="8">
-            <button class="btn btn-lg cherche" >Search for user</button>
-            <button type="button" class="btn btn-lg cherche" data-toggle="modal" data-target="#myModal">Add Person</button>
-            <a href="index.php"><button class="btn btn-lg cherche"><span>Logout </span></button></a>
-        </div>
+        
             
         <div class="container">
             <!-- Trigger the modal with a button -->
@@ -48,7 +77,7 @@
                             </div>
                             <div class="modal-body">
                             </div>
-                            <form method ="POST" action="add_person.php" >
+                            <form method="POST" action="./logout.php" >
                                 <div class="input-row">
                                     <div class="input-group">
                                         <label>First Name :</label>
@@ -63,23 +92,24 @@
                                         <input type="mail" name="Mail" require>
                                     </div>
                                     <div class="input-group">
+                                        <label>Phone :</label>
+                                        <input type="text" name="Phone" require>
+                                    </div>
+                                    <div class="input-group">
                                         <label>Adress :</label>
                                         <input type="text" name="Adress">
                                     </div>
                                     <div class="input-group">
-                                        <label>Phone :</label>
-                                        <input type="text" name="Phone" require>
-
-                                        <input type="checkbox" name="checkbox" id="F"> <label for="F">Friend</label>
-                                        <input type="checkbox" name="checkbox" id="Fam"> <label for="Fam">Family</label>
-                                        <input type="checkbox" name="checkbox" id="B"> <label for="B">Business</label>
+                                        <input type="radio" name="checkbox" id="F"  value="Friend" checked> <label for="F">Friend</label>
+                                        <input type="radio" name="checkbox" id="Fam" value="Family"> <label for="Fam">Family</label>
+                                        <input type="radio" name="checkbox" id="B" value="Business"> <label for="B">Business</label>
                                     </div>
-
                                         <label>Notes :</label>
                                         <textarea rows="10" name="Notes"></textarea>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-default" data-dismiss="modal">SUBMIT</button>
-                                        </div>
+                                </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" name="submit" class="btn btn-default" >SUBMIT</button>
+                                    </div>
                             </form>
                     </div>
                 </div>
@@ -88,119 +118,42 @@
                                 </div>
                             </div>
                         <table id="contacts">
-                            <tr>
-                                <th>ID</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
+                            <tr class="line1">
+                                <th>Id</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
                                 <th>Email</th>
                                 <th>Adress</th>
                                 <th>Phone</th>
                                 <th>Groupe</th>
+                                <th>Notes</th>
                                 <th>Actions</th>
-                            </tr>
-                            <tr>
-                                <td>58011</td>
-                                <td>Abby</td>
-                                <td>Adams</td>
-                                <th>Abby@anywhere.com</th>
-                                <th>Adress1</th>
-                                <th>Phone1</th>
-                                <th>Family</th>
-                                <th>Edit</th>
-                            </tr>
-                            <tr>
-                                <td>58012</td>
-                                <td>Barbara</td>
-                                <td>Bardely</td>
-                                <th>Barbara@anywhere.com</th>
-                                <th>Adress2</th>
-                                <th>Phone2</th>
-                                <th>Family</th>
-                                <th>Edit</th>
-                            </tr>
-                            <tr>
-                                <td>58013</td>
-                                <td>Casier</td>
-                                <td>Cohen</td>
-                                <th>Casier@anywhere.com</th>
-                                <th>Adress3</th>
-                                <th>Phone3</th>
-                                <th>Friend</th>
-                                <th>Edit</th>
-                            </tr>
-                            <tr>
-                                <td>58014</td>
-                                <td>Dana</td>
-                                <td>Donnely</td>
-                                <th>Dana@anywhere.com</th>
-                                <th>Adress4</th>
-                                <th>Phone4</th>
-                                <th>Business</th>
-                                <th>Edit</th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </table>
-                        
-                    </div>
+                                </tr>
+
+                            <?php 
+                                $sql = "SELECT * FROM contacts";
+                                $result = mysqli_query($conn,$sql);
+
+                                    while($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                    <tr class="line1">
+                                        <td><?=$row["id"]?></td>
+                                        <td><?=$row["first_name"]?></td>
+                                        <td><?=$row["last_name"]?></td>
+                                        <td><?=$row["email"]?></td>
+                                        <td><?=$row["address1"]?></td>
+                                        <td><?=$row["phone"]?></td>
+                                        <td><?=$row["group"]?></td>
+                                        <td><?=$row["notes"]?></td>
+                                        <td><span>Edit</span>|<span>Delete</span></td>
+                                    </tr>
+                            <?php 
+                                    }
+                                    ?>
+
+                            </table>
+
+
 
         <script src="./assets/js/script.js"></script>
     </body>
